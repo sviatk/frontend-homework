@@ -1,0 +1,62 @@
+body{
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+}
+
+#main{
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    max-width: 1240px;
+    padding: 0 10px;
+    margin: 0 auto;
+  }
+
+.scroll{
+    overflow-x: auto;
+}
+
+table{
+    border-collapse: collapse;
+    text-align: left;
+    color: #C8C8C8;
+    background: #212121;
+    font-size: 12px;
+    min-width: 1025px;
+}
+
+table th, td{
+    padding: 20px;
+}
+
+table th{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+table tr:nth-child(even){
+
+}
+
+table tr:nth-child(odd){
+    background: #1C1C1C;
+}
+
+table th:first-child,
+table td:first-child{
+    padding-left: 38px;
+}
+
+table th:last-child,
+table td:last-child{
+    padding-right: 38px;
+}
+
+table thead{
+    
+}
+
+table tbody{
+
+}
