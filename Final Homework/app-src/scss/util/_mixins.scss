@@ -1,0 +1,90 @@
+/*  Fluid Font Size */
+
+/*
+exemple:
+h1 {
+  @include fluid-font(52px, 58px, 360px, 1920px);
+}
+ */
+@use "sass:math";
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    //@return $number / ($number * 0 + 1);
+    @return math.div($number, $number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+// helper function, that calculates fluid font size
+// $f-min - min font size
+// $f-max - max font size
+// $w-min - min window width
+// $w-max - max window width
+// $units - measure units (e.x. px, em, rem, vw)
+@function calcFluidFontSize($fMin, $fMax, $wMin, $wMax, $units: px) {
+  $fMin: strip-unit($fMin);
+  $fMax: strip-unit($fMax);
+  $wMin: strip-unit($wMin);
+  $wMax: strip-unit($wMax);
+
+  //$k: ($fMax - $fMin) / ($wMax - $wMin);
+  $k: math.div($fMax - $fMin, $wMax - $wMin);
+  $b: $fMin - $k * $wMin;
+
+  $b: $b + $units;
+
+  @return calc(#{$k} * 100vw + #{$b});
+}
+
+// Fluid font size
+// $f-min - min font size
+// $f-max - max font size
+// $w-min - min window width
+// $w-max - max window width
+// $fallback - default font size for old browsers support
+// $units - measure units (e.x. px, em, rem, vw)
+@mixin fluid-font($fMin, $fMax, $wMin, $wMax, $fallback: false, $units: px) {
+
+  font-size: $fMin;
+
+  @media (min-width: $wMin) {
+    @if ($fallback) {
+      font-size: $fallback;
+    }
+    font-size: calcFluidFontSize($fMin, $fMax, $wMin, $wMax, $units);
+  }
+  @media (min-width: $wMax) {
+    font-size: $fMax;
+  }
+}
+
+@mixin fluid-line-height($lMin, $lMax, $lwMin, $lwMax, $lFallback: false, $lUnits: px) {
+  line-height: $lMin;
+  @media (min-width: $lwMin) {
+    @if ($lFallback) {
+      line-height: $lFallback;
+    }
+    line-height: calcFluidFontSize($lMin, $lMax, $lwMin, $lwMax, $lUnits);
+  }
+  @media (min-width: $lwMax) {
+    line-height: $lMax;
+  }
+}
+
+/* END Fluid Font Size */
+
+/* Fluid Size
+Usage:
+img {
+  height: vw(220)
+  margin: vw(25) vw(50)
+}
+*/
+@function vw($w) {
+  $k: $w / 12.8;
+  @return #{$k}vw;
+}
+
+/* END Fluid Size */

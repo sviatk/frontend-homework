@@ -1,0 +1,136 @@
+.header {
+  padding-top: 98px;
+  padding-bottom: 122px;
+
+  @media (max-width: 767px) {
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__brand {
+    order: 0;
+    @media (max-width: 767px) {
+      img {
+        width: 100px;
+      }
+    }
+  }
+
+  &__navigation {
+    margin: auto 0;
+
+    &-list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: row;
+      margin: 0;
+      padding: 0;
+      @media (max-width: 767px) {
+        display: none !important;
+      }
+
+      &-item {
+        //margin: 0 43px;
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 38px;
+
+        a {
+          color: #404242;
+          text-decoration: none;
+          padding: 43px;
+
+          &:hover {
+            color: #58A9A5;
+          }
+        }
+      }
+    }
+  }
+
+  &__cta-wrapp {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  &__sandwich {
+    display: none;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: center;
+    @media(max-width: 768px) {
+      order: -3;
+      display: block;
+      margin: auto 0;
+    }
+  }
+
+  .sandwich {
+    &__icon {
+      display: flex;
+
+      &-bar {
+        content: url("data:image/svg+xml,%3Csvg width='24' height='3' viewBox='0 0 24 3' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='24' height='3' fill='%2358A9A5'/%3E%3C/svg%3E%0A");
+      }
+
+      &-close {
+        content: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2.12134' width='24' height='3' transform='rotate(45 2.12134 0)' fill='%2358A9A5'/%3E%3Crect width='24' height='3' transform='matrix(-0.707107 0.707107 0.707107 0.707107 17.1213 0)' fill='%2358A9A5'/%3E%3C/svg%3E%0A");
+        display: none;
+      }
+
+      &:not(:last-child) {
+        padding-bottom: 4px;
+      }
+    }
+  }
+
+  .icon-active {
+    display: flex;
+    position: relative;
+    left: 1%;
+  }
+
+  .popup-menu {
+    margin-top: 20px;
+    border-top: 1px solid #58A9A5;
+
+    &__menu-container {
+      text-align: center;
+    }
+
+    &__navigation-list-item {
+      margin: 0;
+      padding: 12px 0;
+    }
+
+    &__menu {
+      text-align: center;
+      list-style-type: none;
+      padding: 64px 0 125px;
+      margin: 0;
+
+      a {
+        color: #404242;
+        font-size: 24px;
+        line-height: 21px;
+        text-decoration: none;
+      }
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
